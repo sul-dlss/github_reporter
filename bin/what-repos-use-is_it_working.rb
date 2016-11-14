@@ -4,7 +4,7 @@ require 'yaml'
 config = YAML.load_file('config.yml')
 
 client = GithubReporter.new(config['access_token'])
-client.dlss_repos.each do |repo|
+client.dlss_public_repos.each do |repo|
   next unless client.gemfile_exists_for?(repo)
   if client.does_repo_have_gem?(repo, 'is_it_working-cbeer')
     puts "#{repo} uses is_it_working-cbeer"
