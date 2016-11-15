@@ -21,7 +21,7 @@ describe 'GithubReporter' do
   # "total_private_repos": 27
 
   it 'returns enough of our repos' do
-    expect(@github_reporter.dlss_public_repos.count).to be 191
+    expect(@github_reporter.dlss_repos.count).to be > 191
   end
 
   it 'says whether a repo has a Gemfile or not' do

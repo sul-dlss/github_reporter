@@ -16,7 +16,7 @@ class GithubReporter
     @client.access_token
   end
 
-  def dlss_public_repos
+  def dlss_repos
     dlss_repo_names = []
     raw_repos = @client.organization_repositories('sul-dlss')
     raw_repos.each { |repo| dlss_repo_names << repo.name }
