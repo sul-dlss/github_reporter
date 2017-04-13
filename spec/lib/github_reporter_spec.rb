@@ -29,8 +29,18 @@ describe 'GithubReporter' do
     expect(@github_reporter.gemfile_exists_for?('puppetdb_reporter')).to be_truthy
   end
 
+  it 'says whether a repo has a Gemfile.lock or not' do
+    expect(@github_reporter.gemfile_lock_exists_for?('openseadragon')).to be_falsey
+    expect(@github_reporter.gemfile_lock_exists_for?('puppetdb_reporter')).to be_truthy
+  end
+
   it 'says whether a gem is in the Gemfile' do
     expect(@github_reporter.does_repo_have_gem?('puppetdb_reporter', 'is_it_working')).to be_falsey
     expect(@github_reporter.does_repo_have_gem?('sul-requests', 'is_it_working')).to be_truthy
+  end
+
+  it 'says whether a gem is in the Gemfile.lock' do
+    expect(@github_reporter.does_gemfile_lock_have_gem?('puppetdb_reporter', 'is_it_working (1.1.0)')).to be_falsey
+    expect(@github_reporter.does_gemfile_lock_have_gem?('sul-requests', 'is_it_working (1.1.0)')).to be_truthy
   end
 end
